@@ -35,6 +35,18 @@ def validate_board(board:list) -> bool:
         if board[i][8-i] != '*':
             diag = 8 - i
             break
+    for j in range(diag):
+        repeat = set()
+        if board[8-j][j].isdigit():
+            repeat.add(board[8-j][j])
+        for b in range(1, width+1):
+            if board[8-j-b][j] in repeat or board[8-j][j+b] in repeat:
+                return False
+            else:
+                if board[8-j-b][j].isdigit():
+                    repeat.add(board[8-j-b][j])
+                if board[8-j][j+b].isdigit():
+                    repeat.add(board[8-j][j+b])
     return True
 
 if __name__ == "__main__":
