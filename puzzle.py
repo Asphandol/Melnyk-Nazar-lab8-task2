@@ -19,6 +19,14 @@ def validate_board(board:list) -> bool:
             else:
                 if board[i][m].isdigit():
                     already_been.add(board[i][m])
+    for k in range(total):
+        already_been = set()
+        for n in range(total):
+            if board[n][k] in already_been:
+                return False
+            else:
+                if board[n][k].isdigit():
+                    already_been.add(board[n][k])
     return True
 
 if __name__ == "__main__":
