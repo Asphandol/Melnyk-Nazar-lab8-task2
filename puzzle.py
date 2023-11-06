@@ -27,6 +27,14 @@ def validate_board(board:list) -> bool:
             else:
                 if board[n][k].isdigit():
                     already_been.add(board[n][k])
+    for i in range(9):
+        if board[0][i] != '*':
+            width = 8 - i
+            break
+    for i in range(9):
+        if board[i][8-i] != '*':
+            diag = 8 - i
+            break
     return True
 
 if __name__ == "__main__":
